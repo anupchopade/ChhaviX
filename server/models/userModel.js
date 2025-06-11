@@ -7,6 +7,6 @@ firstName: { type: String},
 lastName: { type: String}, 
 creditBalance: { type: Number, default:5 } 
 }) 
-I 
+
 const userModel = mongoose.models.user || mongoose.model("user", userSchema) 
 export default userModel;
