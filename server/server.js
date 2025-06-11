@@ -1,9 +1,10 @@
 import express from 'express'
 import cors from 'cors'
 import connectDB from './configs/mongodb.js'
-import dotenv from 'dotenv';
+import userRouter from './routes/userRoutes.js'
+// import dotenv from 'dotenv';
 
-dotenv.config();
+// dotenv.config();
 
 const app = express()
 
@@ -13,6 +14,8 @@ app.use(cors())
 
 app.get('/',(req,res)=>
 res.send("API working"))
+
+app.use('/api/user',userRouter)
 
 // Connect to MongoDB
 connectDB().catch(console.error)
