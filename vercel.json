@@ -1,14 +1,26 @@
 {
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
+  "builds": [
+    {
+      "src": "server/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "server/package.json",
+          "server/package-lock.json"
+        ],
+        "root": "server",
+        "outputDirectory": "./"
+      },
+      "installCommand": "npm install --prefix server"
+    },
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "frontend/dist"
+      }
     }
-  },
-  "functions": {
-    "server/server.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
