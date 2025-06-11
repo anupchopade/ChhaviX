@@ -25,20 +25,21 @@ const clerkWebhooks=async (req,res)=>{
                     clerkId:data.id,
                     email:data.email_addresses[0].email_addresses,
                     fistName:data.first_name,
-                    lastnamae:data.last_name,
+                    lastName:data.last_name,
                     photo:data.image_url
 
                 }
 
                 await userModel.create(userData)
                 res.json({})
+                console.log("user created successfully")
                 break;
             }
             case "user.updated":{
                 const userData={
                     email:data.email_addresses[0].email_addresses,
                     fistName:data.first_name,
-                    lastnamae:data.last_name,
+                    lastName:data.last_name,
                     photo:data.image_url
 
                 }
@@ -62,7 +63,5 @@ const clerkWebhooks=async (req,res)=>{
         res.json({success:false,message:error.message})
     }
 }
-
-
 
 export {clerkWebhooks}

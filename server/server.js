@@ -2,9 +2,9 @@ import express from 'express'
 import cors from 'cors'
 import connectDB from './configs/mongodb.js'
 import userRouter from './routes/userRoutes.js'
-// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 
-// dotenv.config();
+dotenv.config();
 
 const app = express()
 
@@ -25,6 +25,7 @@ if (process.env.NODE_ENV !== 'production') {
   const PORT = process.env.PORT || 4000
   app.listen(PORT, () => console.log("server running on port " + PORT))
 }
+
 
 // Export the Express API
 export default app
