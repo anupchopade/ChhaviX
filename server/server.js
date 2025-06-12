@@ -40,9 +40,6 @@
 
 
 
-
-
-
 import express from 'express'
 import cors from 'cors'
 import connectDB from './configs/mongodb.js'
@@ -73,4 +70,4 @@ if (process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => console.log("server running on port " + PORT))
 }
 
-export default app
+export default app  
