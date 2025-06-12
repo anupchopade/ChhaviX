@@ -68,16 +68,14 @@
 // export {clerkWebhooks}
 
 
-
-
 import { Webhook } from 'svix'
-import userModel from '../models/userModel.js'
+import userModel from '../../models/userModel.js'
 
 const clerkWebhooks = async (req, res) => {
     try {
         const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET)
 
-        const payload = req.body.toString('utf8')  // <-- IMPORTANT FIX HERE
+        const payload = req.body.toString('utf8')  // 🔥 This is the critical fix
         const headers = {
             "svix-id": req.headers["svix-id"],
             "svix-timestamp": req.headers["svix-timestamp"],
@@ -124,7 +122,7 @@ const clerkWebhooks = async (req, res) => {
         }
 
     } catch (error) {
-        console.log(error.message)
+        console.log("Webhook error:", error.message)
         res.status(400).json({ success: false, message: error.message })
     }
 }
