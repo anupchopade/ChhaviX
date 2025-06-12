@@ -18,13 +18,14 @@ const clerkWebhooks=async (req,res)=>{
         })
 
         const {data, type}=req.body
+        console.log('Webhook received:', { type, data });
 
         switch (type) {
             case "user.created":{
                 const userData={
                     clerkId:data.id,
                     email:data.email_addresses[0].email_addresses,
-                    fistName:data.first_name,
+                    firstName:data.first_name,
                     lastName:data.last_name,
                     photo:data.image_url
 
@@ -38,7 +39,7 @@ const clerkWebhooks=async (req,res)=>{
             case "user.updated":{
                 const userData={
                     email:data.email_addresses[0].email_addresses,
-                    fistName:data.first_name,
+                    firstName:data.first_name,
                     lastName:data.last_name,
                     photo:data.image_url
 
