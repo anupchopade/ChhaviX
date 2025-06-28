@@ -4,13 +4,14 @@ import Home from './pages/Home'
 import Result from './pages/Result'
 import BuyCredits from  './pages/BuyCredits'
 import Navbar from "./components/Navbar"
-
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const App=()=>{
 
   return (
     <div className="bg-slate-300 min-h-screen">
+      <ToastContainer position="bottom-right"/>
       <Navbar/>
       <Routes>
         <Route path='/'  element={<Home/>}/>

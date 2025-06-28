@@ -2,6 +2,9 @@ import React from 'react'
 import logo from '../assets/logo.png'
 import {Link} from 'react-router-dom'
 import { useClerk, UserButton, useUser } from '@clerk/clerk-react';
+import { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
+import { useEffect } from 'react';
 
 
 
@@ -9,6 +12,14 @@ const Navbar = () => {
 
   const {openSignIn}=useClerk()
   const {isSignedIn,user}=useUser()
+  const {credit,loadCreditsData}=useContext(AppContext)
+
+  useEffect(()=>{
+    
+      if(isSignedIn){
+        loadCreditsData()
+      }
+  },[isSignedIn])
 
   return (
     <div className="px-4 lg:px-8">
