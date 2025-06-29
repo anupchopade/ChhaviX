@@ -109,16 +109,18 @@
 
 // export default app;
 
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
+
 import connectDB from './configs/mongodb.js';
 import userRouter from './routes/userRoutes.js';
 import bodyParser from 'body-parser';
+import imageRouter from './routes/imageRoutes.js';
 
-dotenv.config();
 
 const app = express();
 
@@ -134,6 +136,8 @@ app.get('/', (req, res) => res.send("API working"));
 
 // ✅ Routes
 app.use('/api/user', userRouter);
+
+app.use('/api/image',imageRouter)
 
 // ✅ Connect MongoDB
 connectDB().catch(console.error);

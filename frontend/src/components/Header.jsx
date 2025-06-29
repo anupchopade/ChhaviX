@@ -1,8 +1,12 @@
-import React from 'react'
-import upload from '../assets/upload.svg'
-import img_header from '../assets/img_header.jpeg'
+import React from "react";
+import upload from "../assets/upload.svg";
+import img_header from "../assets/img_header.jpeg";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 
 const Header = () => {
+  const { removeBg } = useContext(AppContext);
+
   return (
     <div className="relative max-w-screen-xl mx-auto px-4 lg:px-8">
       {/* Content Row */}
@@ -10,20 +14,33 @@ const Header = () => {
         {/* Left Side */}
         <div>
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
-            Snap. Upload. <br className='max-md:hidden' />
-            <span className="text-blue-600 font-extrabold animate-pulse">Vanish</span> the Background
+            Snap. Upload. <br className="max-md:hidden" />
+            <span className="text-blue-600 font-extrabold animate-pulse">
+              Vanish
+            </span>{" "}
+            the Background
           </h1>
           <p className="text-lg md:text-xl text-gray-600 mb-8">
-            Remove background from your images in seconds with our AI-powered tool
+            Remove background from your images in seconds with our AI-powered
+            tool
           </p>
           <div>
-            <input type="file" className="hidden" id="fileInput" />
+            <input
+              onChange={(e) => {
+                const image = e.target.files[0];
+                removeBg(image);
+              }}
+              type="file"
+              accept="image/* "
+              className="hidden"
+              id="fileInput"
+            />
             <label
               htmlFor="fileInput"
               className="cursor-pointer hover:scale-105 inline-flex items-center gap-2 sm:px-8 sm:py-3 px-4 py-2 text-blue-600 font-extrabold rounded-full bg-slate-200 hover:bg-gray-100 transition-colors duration-200"
             >
               <img src={upload} alt="upload" className="w-6 h-6" />
-              <span>Upload Image</span>
+              <span>Upload Image</span> 
             </label>
           </div>
         </div>
@@ -38,7 +55,7 @@ const Header = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
