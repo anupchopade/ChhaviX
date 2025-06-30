@@ -14,11 +14,11 @@ const Result = () => {
       <div className="flex justify-around w-full mb-6">
         <div className="flex flex-col items-center p-4 bg-white rounded-xl shadow-md border border-gray-200">
           <p className="text-lg font-semibold mb-2">Original</p>
-          <img src={image ? URL.createObjectURL(image): ''} alt="original" className="rounded-xl w-96 h-64 object-cover" />
+          <img src={image ? URL.createObjectURL(image): null} alt="original" className="rounded-xl w-96 h-64 object-cover" />
         </div>
         <div className="flex flex-col items-center p-4 bg-white rounded-xl shadow-md border border-gray-200">
           <p className="text-lg font-semibold mb-2">Background Removed</p>
-          <img src={resultImage ? resultImage : ''} alt="resulted" className="rounded-xl w-96 h-64 object-cover" />
+          <img src={resultImage ? resultImage : null } alt="resulted" className="rounded-xl w-96 h-64 object-cover" />
         </div>
         </div>
       {resultImage && <div className='flex justify-end items-center flex-wrap gap-4 w-full pr-4 pb-4'>
