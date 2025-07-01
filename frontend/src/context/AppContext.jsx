@@ -32,8 +32,8 @@ const AppContextProvider=(props)=>{
 
             const token= await getToken()
             // const token = await getToken();
-console.log("🔐 Token being sent to backend:", token);
-console.log("🧾 Token in removeBg():", token);
+// console.log("🔐 Token being sent to backend:", token);
+// console.log("🧾 Token in removeBg():", token);
 
             //  const {data}=await axios.get(backendUrl+'/api/user/credits',{headers:{token}})
             const { data } = await axios.get(
@@ -46,12 +46,12 @@ console.log("🧾 Token in removeBg():", token);
 )
 
             if(data.success){
-                 console.log(data)
+                //  console.log(data)
                 setCredit(data.credits)
-                console.log(data.credits)
+                // console.log(data.credits)
             }
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             toast.error(error.message)
         }
     }
@@ -108,7 +108,7 @@ console.log("🧾 Token in removeBg():", token);
 
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         toast.error(error.message);
     }
 };

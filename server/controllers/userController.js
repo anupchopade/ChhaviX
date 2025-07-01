@@ -61,7 +61,7 @@ const userCredits =async(req,res)=>{
 
 
 
-//initializing gateway
+// initializing gateway
 const razorpayInstance=new razorpay({
   // key_id:process.env.RAZORPAY_KEY_ID,
   // key_secret: process.env.RAZORPAY_KEY_SECRET,
@@ -69,19 +69,21 @@ const razorpayInstance=new razorpay({
   key_secret: 'Lqdiu8iMj2h7WOGBnvS4Jqaz',
 })
 
+
+
 //API to make payment to buy credits
 const paymentRazorpay=async(req,res)=>{
 
   try {
-console.log("🧾 RAZORPAY_KEY_ID:", process.env.RAZORPAY_KEY_ID);
-console.log("🧾 RAZORPAY_KEY_SECRET:", process.env.RAZORPAY_KEY_SECRET);
+// console.log("🧾 RAZORPAY_KEY_ID:", process.env.RAZORPAY_KEY_ID);
+// console.log("🧾 RAZORPAY_KEY_SECRET:", process.env.RAZORPAY_KEY_SECRET);
 
       // const {clerkId,planId}=req.body
       const clerkId = req.clerkId;  // ✅ From auth middleware
     const { planId } = req.body;
 
-    console.log("🔍 ClerkId:", clerkId);
-    console.log("🔍 PlanId:", planId);
+    // console.log("🔍 ClerkId:", clerkId);
+    // console.log("🔍 PlanId:", planId);
 
       const userData=await userModel.findOne({ clerkId})
 
@@ -95,22 +97,22 @@ console.log("🧾 RAZORPAY_KEY_SECRET:", process.env.RAZORPAY_KEY_SECRET);
       switch (planId) {
         case 'Basic':
           plan='Basic'
-          credits=100
-          amount=10
+          credits=3
+          amount=99
           break;
 
 
       case 'Advanced':
           plan='Advanced'
-          credits=500
-          amount=50
+          credits=5
+          amount=149
           break;
 
 
           case 'Business':
           plan='Business'
-          credits=5000
-          amount=250
+          credits=20
+          amount=499
           break;
 
 
